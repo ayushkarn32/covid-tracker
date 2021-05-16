@@ -1,0 +1,86 @@
+.App {
+  font-family: sans-serif;
+}
+iframe {
+  display: none;
+}
+:root {
+  --blue: slateblue;
+  --green: #2ecc71;
+  --red: #e74c3c;
+}
+.h3 {
+  left: 20px;
+  font-weight: bolder;
+}
+.head-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.virus {
+  margin: 10px;
+}
+.title {
+  font-weight: bolder;
+  font-size: 24px;
+}
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 80vh;
+}
+.virus {
+  width: 50px;
+  height: 50px;
+}
+.card-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  display: inline-block;
+  width: 200px;
+  height: 80px;
+  text-align: center;
+  margin: 10px 20px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+}
+.card-new {
+  border-bottom: 10px solid var(--blue);
+}
+.card-recover {
+  border-bottom: 10px solid var(--green);
+}
+.card-death {
+  border-bottom: 10px solid var(--red);
+}
+
+.spinner {
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  border-left-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 600px) {
+  .box {
+    width: 100%;
+    height: 100%;
+  }
+}
