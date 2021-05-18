@@ -16,7 +16,7 @@ export default function Cards(props) {
           {today_newcase}
         </div>
         <div className="card card-recover">
-          <p>Recoverd</p>
+          <p>Recovered</p>
           {today_recovered}
         </div>
         <div className="card card-death">
@@ -28,15 +28,15 @@ export default function Cards(props) {
       <p className="h3">Overall Update</p>
       <div className="card-cont">
         <div className="card card-new">
-          <p>New</p>
+          <p>Total Infected</p>
           {extra5}
         </div>
         <div className="card card-recover">
-          <p>Recoverd</p>
+          <p>Total Recovered</p>
           {extra7}
         </div>
         <div className="card card-death">
-          <p>Death</p>
+          <p>Total Death</p>
           {deaths}
         </div>
       </div>

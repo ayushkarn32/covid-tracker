@@ -2,7 +2,7 @@ import "./styles.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Cards from "./Cards";
-import Province from "./charts/Province";
+import Charts from "./charts/Charts";
 
 export default function App() {
   const [result, setresult] = useState([]);
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="head-container">
-        <img src="/img/coronavirus.svg" alt="corona-logo" className="virus" />
+        <img src="/img/corona.svg" alt="corona-logo" className="virus" />
         <p className="title">Covid Tracker Nepal</p>
       </div>
       {result.length === 0 ? (
@@ -35,7 +35,7 @@ export default function App() {
           <div className="info-box"> </div>
         </div>
       )}
-      <Province />
+      <Charts />
     </div>
   );
 }

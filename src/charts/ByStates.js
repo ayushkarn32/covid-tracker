@@ -1,11 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Bar, Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
+import { Api } from "./Api";
+import { useContext } from "react";
 import "./charts.css";
 
-export default function App(props) {
-  console.log(props);
-  const [result, setresult] = useState([]);
+export default function App() {
+  const result = useContext(Api);
   const state = [
     "Province 1",
     "Province 2",
@@ -16,23 +15,12 @@ export default function App(props) {
     "Sudurpaschim"
   ];
 
-  const getdata = async () => {
-    const response = await axios
-      .get(
-        `https://portal.edcd.gov.np/rest/api/fetch?filter=casesOfDay&type=dayByDay&eDate=2021-05-15&disease=COVID-19`
-      )
-      .catch((error) => console.log(error));
-    setresult(response.data);
-  };
-  useEffect(() => {
-    getdata();
-  }, []);
   const province = [];
   for (let i = 0; i < state.length; i++) {
     let currentTotal = 0;
     for (let j = 0; j < result.length; j++) {
       if (state[i] === result[j]["Province"]) {
-        currentTotal += parseInt(result[j]["Value"]);
+        currentTotal += parseInt(result[j]["Value"], 10);
       }
     }
     if (currentTotal) {
@@ -58,7 +46,13 @@ export default function App(props) {
   };
   return (
     <div className="box">
-      <Bar data={chart} />
+      {result.length === 0 ? (
+        <div className="container">
+          <div className="spinner"></div>
+        </div>
+      ) : (
+        <Bar data={chart} />
+      )}
     </div>
   );
 }

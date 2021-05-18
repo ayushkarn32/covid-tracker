@@ -4,8 +4,8 @@
   --red: #e74c3c;
 }
 .box {
-  width: 70%;
-  height: 70px;
+  width: 90%;
+  margin: 0px auto;
 }
 @media only screen and (max-width: 600px) {
   .box {
