@@ -7,7 +7,7 @@ export const DataProvider = (props) => {
   let date_ob = new Date();
   let hours = date_ob.getHours();
   let date = "";
-  if (hours < 20) {
+  if (hours < 21) {
     date = parseInt(("0" + date_ob.getDate()).slice(-2), 10) - 1;
   } else {
     date = ("0" + date_ob.getDate()).slice(-2);
