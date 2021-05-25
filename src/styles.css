@@ -70,6 +70,14 @@ iframe {
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
+.body-container {
+  display: flex;
+}
+.info-box {
+  margin: 50px 0px;
+  height: 50px;
+  width: 100%;
+}
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -78,6 +86,15 @@ iframe {
     transform: rotate(360deg);
   }
 }
+@media only screen and (max-width: 900px) {
+  .body-container {
+    flex-direction: column;
+  }
+  .info-box {
+    margin: 20px auto;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .box {
     width: 100%;
@@ -90,5 +107,11 @@ iframe {
   .card {
     margin: 10px 10px;
   }
+  .body-container {
+    flex-direction: column;
+  }
+  .info-box {
+    margin: 20px auto;
+    padding: 10px 10px;
+  }
 }
-

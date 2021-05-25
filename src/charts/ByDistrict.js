@@ -1,12 +1,15 @@
 import { Api } from "./Api";
 import { useContext } from "react";
 import { useState } from "react";
-// import { Bar, Pie } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFemale, faMale } from "@fortawesome/free-solid-svg-icons";
 
 export default function App() {
   const result = useContext(Api);
   const [stats, setstats] = useState([]);
   const [finaldata, setfinaldata] = useState("");
+  //district list
   const dist_lowercase = [
     "Achham",
     "Arghakhanchi",
@@ -86,8 +89,10 @@ export default function App() {
     "Udayapur"
   ];
   const district = dist_lowercase.map((name) => name.toUpperCase());
-  const dist_data = [];
 
+  //storing the required data
+
+  const dist_data = [];
   for (let i = 0; i < district.length; i++) {
     let currentTotal = 0;
     let tmale = 0;
@@ -113,6 +118,7 @@ export default function App() {
     }
   }
 
+  //getting value from text box
   const get_from_box = (event) => {
     const text = event.target.value;
     if (district.includes(text)) {
@@ -120,6 +126,7 @@ export default function App() {
     }
   };
 
+  //updating state of the obtained value from text box
   const clicked = () => {
     const dist_array = [];
     // dist_data_total=dist_data.find((x) => x.name === finaldata)
@@ -130,7 +137,24 @@ export default function App() {
     dist_array.push(dist_data_total, dist_data_male, dist_data_female);
     setstats(dist_array);
   };
+  // console.log(stats)
+  //creating chart for district chart
 
+  const chart = {
+    labels: ["Male", "Female"],
+    datasets: [
+      {
+        label: "New Infected",
+        data: [stats[1], stats[2]],
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "rgb(54, 162, 235)",
+          "rgb(255, 205, 86)"
+        ],
+        hoverOffset: 4
+      }
+    ]
+  };
   return (
     <div>
       {dist_data === 0 ? (
@@ -138,9 +162,9 @@ export default function App() {
           <div className="spinner"></div>
         </div>
       ) : (
-        <div className="district-box">
-          <p className="h3">District Wise Satistics </p>
-          <div>
+        <div>
+          <p className="h3">Search by District </p>
+          <div className="district-box">
             <input
               type="text"
               className="list-district"
@@ -164,10 +188,33 @@ export default function App() {
             {stats.length === 0 ? (
               <span></span>
             ) : (
-              <div>
-                <span>Total:{stats[0]} </span>
-                <span>Male :{stats[1]} </span>
-                <span>Female :{stats[2]} </span>
+              <div className="result-container">
+                <div className="left-result">
+                  <div className="card fullbox">
+                    <div className="spaced">{finaldata}</div>
+                    <div className="spaced">Total</div>
+                    <div className="spaced">{stats[0]}</div>
+                  </div>
+                  <div className="card-cont">
+                    <div className="card nospace">
+                      <p>Male</p>
+                      <div>
+                        <FontAwesomeIcon icon={faMale} />
+                      </div>
+                      {stats[1]}{" "}
+                    </div>
+                    <div className="card nospace">
+                      <p>Female</p>
+                      <div>
+                        <FontAwesomeIcon icon={faFemale} />
+                      </div>
+                      {stats[2]}{" "}
+                    </div>
+                  </div>
+                </div>
+                <div className="right-result">
+                  <Pie data={chart} />
+                </div>
               </div>
             )}
           </div>

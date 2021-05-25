@@ -1,5 +1,4 @@
 export default function Cards(props) {
-  
   const {
     today_death,
     today_recovered,

@@ -35,7 +35,15 @@ export default function App() {
     datasets: [
       {
         label: "New Infected",
-        backgroundColor: "rgb(255, 99, 132)",
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "rgb(46, 204, 113)",
+          "rgb(142, 68, 173)",
+          "rgb(241, 196, 15)",
+          "rgb(52, 152, 219)",
+          "rgb(231, 76, 60)",
+          "rgb(149, 165, 166)"
+        ],
         borderColor: "rgb(255, 99, 132)",
         data: province,
         parsing: {
@@ -51,7 +59,9 @@ export default function App() {
           <div className="spinner"></div>
         </div>
       ) : (
-        <Bar data={chart} />
+        <div className="bar-graph">
+          <Bar data={chart} />
+        </div>
       )}
     </div>
   );

@@ -32,7 +32,14 @@ export default function App() {
           <div className="update-box">
             <Cards props={result} {...result} />
           </div>
-          <div className="info-box"> </div>
+          <div className="card nospace">
+            <div>Emergency Contact</div>
+            <div className="contact-box">
+              <div>1133 (24 Hours)</div>
+              <div>1115 (06:00 AM - 10:00 PM)</div>
+              <div> 9851-255-834 | 9851-255-837 (08:00 AM - 08:00 PM)</div>
+            </div>
+          </div>
         </div>
       )}
       <Charts />
